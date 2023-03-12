@@ -26,24 +26,31 @@ let posicionesX = [];
 let posicionesO = [];
 
 function pintaCasilla(posicion) {
+    let finalizado = false;
     if (turno) {
         tablero[posicion].textContent = "X";
         posicionesX.push(posicion);
         posicionesX.sort;
         if (posicionesX.length >= 3) {
-            hayGanador(posicionesX);
+            finalizado = hayGanador(posicionesX);
         }
     } else {
         tablero[posicion].textContent = "O";
         posicionesO.push(posicion);
         posicionesO.sort;
         if (posicionesO.length >= 3) {
-            hayGanador(posicionesO);
+            finalizado = hayGanador(posicionesO);
         }
     }
     tablero[posicion].removeAttribute("onclick");
     turno = !turno;
+    if (finalizado) {
+        for (let i = 0; i < tablero.length; i++) {
+            tablero[i].removeAttribute("onclick");
+        }
+    }
 }
+
 
 let combinacionGanadora = [
     [3, 4, 5],
@@ -57,6 +64,7 @@ let combinacionGanadora = [
 ];
 
 function hayGanador(posicion) {
+    let finalizado = false;
     for (let i = 0; i < combinacionGanadora.length; i++) {
         let contador = 0;
         for (let j = 0; j < posicion.length; j++) {
@@ -65,16 +73,19 @@ function hayGanador(posicion) {
             }
         }
         if (contador == 3) {
-            for(let k=0;k<combinacionGanadora[i].length;k++){
-                tablero[combinacionGanadora[i][k]].style.backgroundColor ="green";
+            finalizado = true;
+            for (let k = 0; k < combinacionGanadora[i].length; k++) {
+                // tablero[combinacionGanadora[i][k]].style.backgroundColor = "lightblue";
+                tablero[combinacionGanadora[i][k]].style.backgroundImage = "repeating-radial-gradient(lightgreen, azure 20%, beige 20%)";
             }
-            if(turno){
-            alert("Han ganado las X");
-            } else{
-            alert("Han ganado las O");
+            if (turno) {
+                alert("Han ganado las X");
+            } else {
+                alert("Han ganado las O");
             }
         }
     }
+    return finalizado;
 }
 
 
@@ -122,7 +133,7 @@ function hayGanador(posicion) {
 //  */
 // function ponerFicha() {
 //     /**
-//      * Utilizamos el prompt para recoger la casilla del usuario 
+//      * Utilizamos el prompt para recoger la casilla del usuario
 //      */
 //     let c = prompt('Dime una casilla donde colocar la ficha');
 //     console.log(c);
