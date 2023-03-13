@@ -1,29 +1,41 @@
 /**
  * TIC TAC TOE
  */
-
-// let jugador1 = 'X';
-// let jugador2 = 'O';
+// Puntuacion de los jugadores
+let jugadorX = 0;
+let jugadorO = 0;
 
 // Variable para el turno de cada jugador
 let turno = true;
 
-
-
 let tablero = document.getElementsByClassName('casilla');
+let terminar=document.getElementsByClassName('terminar');
+let reiniciar=document.getElementsByClassName('reiniciar');
 
+terminar[0].setAttribute("onclick", "terminarJuego()");
+reiniciar[0].setAttribute("onclick", "reiniciarJuego()");
 
 // Generar eventos de click para todas las casillas del tablero
-// a) Recorrer tablero y hacer setAttribute ("onclick", funcion)
-// b) Recorrer tablero y crear listener que relacione click con funcion
-
 for (let i = 0; i < tablero.length; i++) {
+    // a) Recorrer tablero y hacer setAttribute ("onclick", funcion)
     tablero[i].setAttribute("onclick", "pintaCasilla(" + i + ")");
+    // b) Recorrer tablero y crear listener que relacione click con funcion
     // tablero[i].addEventListener("click", pintaCasilla(i));
 }
 
 let posicionesX = [];
 let posicionesO = [];
+
+let combinacionGanadora = [
+    [3, 4, 5],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+    [0, 1, 2],
+    [6, 7, 8]
+];
 
 function pintaCasilla(posicion) {
     let finalizado = false;
@@ -43,25 +55,20 @@ function pintaCasilla(posicion) {
         }
     }
     tablero[posicion].removeAttribute("onclick");
-    turno = !turno;
     if (finalizado) {
+
         for (let i = 0; i < tablero.length; i++) {
             tablero[i].removeAttribute("onclick");
         }
+        if(turno){
+            jugadorX+=1;
+        }
+        else{
+            jugadorO+=1;
+        }
     }
+    turno = !turno;
 }
-
-
-let combinacionGanadora = [
-    [3, 4, 5],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-    [0, 1, 2],
-    [6, 7, 8]
-];
 
 function hayGanador(posicion) {
     let finalizado = false;
@@ -75,7 +82,6 @@ function hayGanador(posicion) {
         if (contador == 3) {
             finalizado = true;
             for (let k = 0; k < combinacionGanadora[i].length; k++) {
-                // tablero[combinacionGanadora[i][k]].style.backgroundColor = "lightblue";
                 tablero[combinacionGanadora[i][k]].style.backgroundImage = "repeating-radial-gradient(lightgreen, azure 20%, beige 20%)";
             }
             if (turno) {
@@ -88,62 +94,10 @@ function hayGanador(posicion) {
     return finalizado;
 }
 
+function terminarJuego(){
+console.log("terminar juego");
+}
 
-// function GANAR_X() {
-//     let actual = [];
-//     // Recorrer las casillas para ver su contenido
-//     for (let i = 0; i < tablero.length; i++) {
-//         if (tablero[i].innerHTML == 'X') {
-//             actual.push(i);
-//         }
-//     }
-//     /**
-//      * Utilizar Array.include para comprobar si una de las combinaciones correctas
-//      * esta incluida en mi array de actual
-//      */
-//     for (let i = 0; i < combinacionGanadora.length; i++) {
-//         if (actual.includes(combinacionGanadora[i][0]) && actual.includes(combinacionGanadora[i][1]) && actual.includes(combinacionGanadora[i][2])) {
-//             alert('GANAN LAS X');
-//         }
-//     }
-// }
-
-// function GANAR_O() {
-//     let actual = [];
-//     // Recorrer las casillas para ver su contenido
-//     for (let i = 0; i < tablero.length; i++) {
-//         if (tablero[i].innerHTML == 'O') {
-//             actual.push(i);
-//         }
-//     }
-//     /**
-//      * Utilizar Array.include para comprobar si una de las combinaciones correctas
-//      * esta incluida en mi array de actual
-//      */
-//     for (let i = 0; i < combinacionGanadora.length; i++) {
-//         if (actual.includes(combinacionGanadora[i][0]) && actual.includes(combinacionGanadora[i][1]) && actual.includes(combinacionGanadora[i][2])) {
-//             alert('GANAN LAS O');
-//         }
-//     }
-// }
-
-// /**
-//  * La funcion ponerFicha pide al usuario una posicion para insertar la ficha.
-//  * Si la posicion esta vacia, inserta y en caso contrario, vuelve a pedir la posicion
-//  */
-// function ponerFicha() {
-//     /**
-//      * Utilizamos el prompt para recoger la casilla del usuario
-//      */
-//     let c = prompt('Dime una casilla donde colocar la ficha');
-//     console.log(c);
-
-//     if (tablero[parseInt(c)].innerHTML == '') {
-//         tablero[parseInt(c)].innerHTML = 'X';
-//         GANAR_X();
-//     } else {
-//         alert('Esta casilla esta ocupada');
-//         ponerFicha();
-//     }
-// }
-// // ponerFicha();
+function reiniciarJuego(){
+console.log("reiniciar juego");
+}
