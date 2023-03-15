@@ -1,14 +1,15 @@
 body {
-    background-color: none;
+    display: flex;
+    background-image: url(img/fondo.png);
+    background-size: 100%;
 }
 
 main {
-    background-color: none;
     align-items: center;
+    width: 80vw;
 }
 
 .container{
-background-color: beige;
 padding: 5px;
 }
 
@@ -20,13 +21,73 @@ padding: 5px;
 }
 
 .casilla {
-    width: 13% ;
-    height: 13vw;
-    border: 2px solid black;
+    width: 12% ;
+    height: 10vw;
+    border: 2.5px solid #d461d4;
     border-radius: 10%;
     font-size: 10vw;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;    
+}
+
+.cuadro{
+    border: 2px solid #d461d4;
+    border-radius: 100%;
+    font-family: fantasy;
+    font-size: 5vw;
     text-align: center;
     gap: 8px;
-    background-image: repeating-radial-gradient(aqua, azure 20%, beige 20%);
+    margin-top: -25px;
+    color:#120458;
+    background-color: #120458;
 }
+
+  #turno{
+    font-family: fantasy;
+    font-size:5vw;
+    color:#120458;
+    border: 2px solid #d461d4;
+    border-radius: 5%;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    text-align: center;
+    background-color: #120458;
+  }
+
+  #reiniciar{
+    height: 2.5vw;
+    gap: 8px;
+    color: #d461d4;
+    font-size: 20px;
+    border: 2px solid #d461d4;
+    border-radius: 10%;
+    margin: 5px;
+    background-color: #120458;
+  }
+
+  #terminar{
+    height: 2.5vw;
+    gap: 8px;
+    color: #d461d4;
+    font-size: 20px;
+    border: 2px solid #d461d4;
+    border-radius: 10%;
+    margin: 5px;
+    background-color: #120458;
+  }
+
+  .bordeExterior{
+    text-shadow:
+    2.5px  0px 0px #d461d4,
+    0px  2.5px 0px #d461d4,
+   -2.5px  0px 0px #d461d4,
+    0px -2.5px 0px #d461d4;
+
+  }
+
+  .puntuacion{
+    color: #d461d4;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+  }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
+
 <body>
     <main>
         <div class="container" id="contenedor">
@@ -26,10 +28,24 @@
                 <div class="casilla"></div>
             </div>
         </div>
-        <button class="reiniciar">Reiniciar</button>
-        <button class="terminar">Terminar</button>
     </main>
+    <aside>
+        <div>
+            <p id="quienJuega" class="puntuacion"></p>
+            <div id="turno" class="bordeExterior"></div>
+            <div>
+                <h4 class="puntuacion">Jugador X</h4>
+                <div id="puntosX" class="cuadro"></div>
+            </div>
+            <div>
+                <h4 class="puntuacion">Jugador O</h4>
+                <div id="puntosO" class="cuadro"></div>
+            </div>
+            <button type="button" id="reiniciar">Reiniciar</button>
+            <button type=""button id="terminar">Terminar</button>
+        </div>
+    </aside>
 </body>
-<!-- <script src="app.js"></script>-->
 <script src="tictactoe.js"></script>
+
 </html>
