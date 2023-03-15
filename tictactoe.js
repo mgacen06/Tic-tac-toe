@@ -21,6 +21,7 @@ let tablero = document.getElementsByClassName('casilla');
 
 //Mostrar a quien le toca
 let quienJuega = document.getElementById("quienJuega");
+quienJuega.textContent="Turno de las X";
 // Mostrar contador
 let turnoJugador = document.getElementById("turno");
 // Contador tiempo
@@ -86,7 +87,7 @@ function reiniciarJuego() {
                 } else {
                     jugador = "O";
                 }
-                quienJuega.textContent = `Turno de las ${jugador}: `;
+                quienJuega.textContent = `Turno de las ${jugador}`;
             }
         }, 1000);
     }
@@ -190,4 +191,8 @@ function terminarJuego() {
     puntosO.textContent=jugadorO;
     finalizado=true;
     turnoJugador.innerHTML = "FIN";
+    //Para que ya no puedas jugar mas
+    for (let i = 0; i < tablero.length; i++) {
+        tablero[i].removeAttribute("onclick");
+    }
 }
